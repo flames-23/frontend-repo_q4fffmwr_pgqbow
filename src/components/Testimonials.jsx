@@ -1,39 +1,32 @@
-import { Quote } from "lucide-react";
+import React from 'react';
+import { Star } from 'lucide-react';
 
 const testimonials = [
-  {
-    name: "Radhika S.",
-    text: "The crunch is unbeatable and flavors are authentic. My go-to for entertaining!",
-  },
-  {
-    name: "Chef Arjun",
-    text: "Consistent quality that our restaurant can rely on. Wholesale orders are seamless.",
-  },
-  {
-    name: "Global Foods Importers",
-    text: "Fantastic partner for international retail. SK Papadam delivers on time, every time.",
-  },
+  { id: 1, name: 'Aarav', text: 'Crispy, flavorful, and always fresh. Our family favorite with every meal!', rating: 5 },
+  { id: 2, name: 'Meera', text: 'The jeera papad has the perfect aroma. Love the consistent quality.', rating: 5 },
+  { id: 3, name: 'Rahul', text: 'Great crunch and spice balance. Pairs perfectly with chai!', rating: 4 },
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-            Loved by Food Lovers & Chefs
-          </h2>
-          <p className="mt-2 text-gray-600">Hear from our community around the world.</p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, idx) => (
-            <figure key={idx} className="rounded-2xl border border-orange-100 bg-gradient-to-b from-orange-50 to-white p-6 shadow-sm">
-              <Quote className="text-orange-500 mb-3" />
-              <blockquote className="text-gray-700">“{t.text}”</blockquote>
-              <figcaption className="mt-4 font-semibold text-gray-900">— {t.name}</figcaption>
-            </figure>
-          ))}
-        </div>
+    <section id="testimonials" className="mx-auto max-w-7xl px-6 py-16">
+      <div className="mb-8 text-center">
+        <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">What People Say</h2>
+        <p className="mt-2 text-zinc-600">Real voices from our happy customers.</p>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {testimonials.map((t) => (
+          <blockquote key={t.id} className="rounded-2xl border border-orange-100 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-1">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className={`h-4 w-4 ${i < t.rating ? 'fill-orange-400 text-orange-400' : 'text-zinc-300'}`} />
+              ))}
+            </div>
+            <p className="mt-3 text-zinc-700">“{t.text}”</p>
+            <footer className="mt-4 text-sm font-medium text-zinc-900">— {t.name}</footer>
+          </blockquote>
+        ))}
       </div>
     </section>
   );
