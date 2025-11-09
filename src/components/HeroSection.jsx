@@ -1,4 +1,5 @@
 import { ArrowRight, ShoppingBag } from "lucide-react";
+import Spline from "@splinetool/react-spline";
 
 export default function HeroSection() {
   const scrollTo = (id) => {
@@ -57,14 +58,17 @@ export default function HeroSection() {
               </p>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-6 -z-0 rounded-3xl bg-gradient-to-tr from-amber-200/40 via-orange-200/30 to-red-200/40 blur-2xl" />
-            <img
-              src="https://images.unsplash.com/photo-1589304472366-039f2f8d0873?q=80&w=1600&auto=format&fit=crop"
-              alt="Crispy Indian papadams arranged with spices"
-              className="relative z-10 w-full rounded-3xl shadow-2xl"
-              loading="eager"
-            />
+
+          {/* 3D Hero Visual */}
+          <div className="relative w-full">
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-amber-200/30 via-orange-200/20 to-red-200/30 blur-2xl rounded-3xl" />
+            <div className="relative h-[360px] sm:h-[420px] md:h-[520px] lg:h-[560px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black">
+              <Spline
+                scene="https://prod.spline.design/IWEIbUehLbfUBd3s/scene.splinecode"
+                style={{ width: "100%", height: "100%" }}
+              />
+            </div>
+            <div className="pointer-events-none absolute inset-x-6 -bottom-6 h-24 bg-gradient-to-t from-white/80 to-transparent" />
           </div>
         </div>
       </div>
